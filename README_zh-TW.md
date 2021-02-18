@@ -1,12 +1,20 @@
 # DownloadBot
 
+[![Go Version](https://img.shields.io/github/go-mod/go-version/gaowanliang/DownloadBot.svg?style=flat-square&label=Go&color=00ADD8)](https://github.com/gaowanliang/DownloadBot/blob/master/go.mod)
+[![Release Version](https://img.shields.io/github/v/release/gaowanliang/DownloadBot.svg?style=flat-square&label=Release&color=1784ff)](https://github.com/gaowanliang/DownloadBot/releases/latest)
+[![GitHub license](https://img.shields.io/github/license/gaowanliang/DownloadBot.svg?style=flat-square&label=License&color=2ecc71)](https://github.com/gaowanliang/DownloadBot/blob/master/LICENSE)
+[![GitHub Star](https://img.shields.io/github/stars/gaowanliang/DownloadBot.svg?style=flat-square&label=Star&color=f39c12)](https://github.com/gaowanliang/DownloadBot/stargazers)
+[![GitHub Fork](https://img.shields.io/github/forks/gaowanliang/DownloadBot.svg?style=flat-square&label=Fork&color=8e44ad)](https://github.com/gaowanliang/DownloadBot/network/members)
+
 (目前) 🤖 一個可以控制你的Aria2伺服器、控制伺服器檔，同時可以上傳到OneDrive的Telegram Bot。
 
 ## 意義
 
 這個項目主要就是利用吃灰小盤vps進行離線下載，對於大bt檔進行根據硬碟大小分段下載，每次都下載一部分，然後上傳網盤，刪除再下載其他部分，直到下載完所有檔。
 
-同時，通過機器人協議通信，方便在無法進行內網穿透的機器上進行使用，而且簡化了平時使用下載程式的操作，提高了便利性。
+同時，通過機器人協議通信，方便在無法進行內網穿透的機器上進行使用，而且簡化了平時使用下載程式的操作，提高了便利性。對於連結，直接向Bot發送消息就可以直接識別並下載，可以真正刪除下載檔案夾裡的檔，是AriaNG等web面板無法做到的，作為管理下載的工具，及時通知下載完成都是非常的方便的。可以移動檔，對於通過rclone掛載硬碟的使用者可以直接通過本程式進行複製粘貼等操作，無需打開ssh連接VPS進行cp操作，也非常的方便。
+
+
 ## 實現
 
 <text style="color:red;">**注意：本項目仍處於測試階段，提交的Release僅供測試，現在下載後並不保證您的穩定使用，也不能保證下面所勾選的內容已經被實現。當真正可以正常使用的時候，我會提交 V1.0 版本（V1.0 版本不會實現下面全部功能，但是已經可以正常穩定的使用）**</text>
@@ -51,7 +59,7 @@
 - [x] 上傳文件
     - [x] 下載完成後，向 OneDrive 上傳檔
       - [ ] 中斷點續傳
-    - [ ] 下載完成後，向 Google Drive 上傳檔
+    - [x] 下載完成後，向 Google Drive 上傳檔
     - [ ] 下載完成後，向 Mega 上傳檔
     - [ ] 下載完成後，向 天翼網盤 上傳文件
     - [ ] (當使用Telegram進行通信時)下載完成後，向 Telegram 上傳檔
