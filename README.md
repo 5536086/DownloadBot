@@ -1,4 +1,4 @@
-[简体中文](README_zh-CN.md) [繁體中文](README_zh-TW.md)
+[简体中文](docs/README_zh-CN.md) [繁體中文](docs/README_zh-TW.md)
 
 # DownloadBot
 
@@ -10,10 +10,15 @@
 
 
 (Currently) 🤖 A Telegram Bot that can control your Aria2 server, control server files and also upload to OneDrive.
+
+## 【NOTE】
+Since the author I need to prepare for my graduate exams at the moment, the development progress will be appropriately stalled, I think it is a good idea for the program, so I will keep developing it.
+Questions or suggestions are very welcome, and although I can't focus on development on my end, I still log in to GitHub often to check out everyone's suggestions and pr.😀
+
 ## Project significance
 This project is mainly to use small hard disk server for offline downloading, for large BitTorrent files to be downloaded in sections according to the size of the hard disk, each time downloading a part, then uploading the network disk, delete and then download the other parts, until all the files are downloaded.
 
-At the same time, communication via the bot protocol facilitates use on machines that cannot intranet penetration, and simplifies the usual use of download programs for added convenience.For links, sending a message directly to the Bot will directly identify and download them. It can actually delete files from the download folder, which is not possible with web panels such as AriaNG, and is very convenient as a tool for managing downloads and notifying timely completion of downloads. You can move files, and for users who mount their hard drives via rclone you can copy and paste directly through this program, without having to open an ssh connection to the VPS for cp operations, which is also very convenient.
+At the same time, communication via the bot protocol facilitates use on machines that cannot intranet penetration, and simplifies the usual use of download programs for added convenience.For links, sending a message directly to the Bot will directly identify and download them. It can actually delete files from the download folder, which is not possible with web panels such as AriaNG, and is very convenient as a tool for managing downloads and notifying timely completion of downloads. You can move files, and for users who mount their hard drives via rclone you can copy and paste directly through this program, without having to open an ssh connection to the VPS for `cp` operations, which is also very convenient.
 
 
 ## Functions realized
@@ -34,6 +39,8 @@ At the same time, communication via the bot protocol facilitates use on machines
 
 #### The Bot protocol supports
 - [x] Telegram Bot
+  - [ ] Support multi-user use
+  - [ ] Support group use
 - [ ] Tencent QQ (Use regular QQ users to interact)
 - [ ] DingTalk Bot
 
@@ -99,6 +106,8 @@ At the same time, communication via the bot protocol facilitates use on machines
 4. Configure `config.json` at the root of the program that you want to execute.
 5. Run the executable file
 
+**For a more detailed tutorial, please see:** [Step by Step Guide for DownloadBot](docs/DownloadBot_Guide_en.md)
+
 ## Screenshots
 
 <div align="center">
@@ -127,8 +136,15 @@ At the same time, communication via the bot protocol facilitates use on machines
 #### Corresponding explanations
 * aria2-server : Aria2 server address. Websocket connection is used by default. If you want to use websocket to connect to aria2, be sure to set `enable-rpc=true` in `aria2.conf`. If not necessary, please try to **set the local aria2 address**, in order to maximize the use of this program
 * aria2-key : The value of `rpc-secret` in `aria2.conf`
-* bot-key : ID of telegram BOT
-* user-id : The ID of the administrator
+* bot-key : ID of telegram Bot, get it by using [@BotFather](https://telegram.me/botfather)
+* user-id : The ID of the administrator. It supports setting multiple users as administrators. Different users are separated by commas `,` . If you want to set the users whose `user-id` are 123465789, 987654321 and 963852741 as administrators, you need to set them as follows:
+  ```jsonc
+  {
+    //···
+    "user-id": "123456789,987654321,963852741",
+    //···
+  }
+  ```
 * max-index：Maximum display quantity of download information, 10 pieces are recommended (to be improved in the future)
 * sign: Identification of this Bot, If multiple servers are required to connect to the same Bot, the specific server can be determined through this item.
 * language: Language of Bot output
