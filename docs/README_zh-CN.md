@@ -6,17 +6,25 @@
 [![GitHub Star](https://img.shields.io/github/stars/gaowanliang/DownloadBot.svg?style=flat-square&label=Star&color=f39c12)](https://github.com/gaowanliang/DownloadBot/stargazers)
 [![GitHub Fork](https://img.shields.io/github/forks/gaowanliang/DownloadBot.svg?style=flat-square&label=Fork&color=8e44ad)](https://github.com/gaowanliang/DownloadBot/network/members)
 
-(目前) 🤖 一个可以控制你的Aria2服务器、控制服务器文件，同时可以上传到OneDrive的Telegram Bot。
+(目前) 🤖 一个可以控制你的Aria2服务器、控制服务器文件，同时可以上传到OneDrive/Google Drive的Telegram Bot。
 
 ## 意义
+> 以下仅为本程序完成后的设想，目前描述的功能并没有完全实现，实现的详情请参考下面的功能实现
 
 这个项目主要就是利用吃灰小盘vps进行离线下载，对于大bt文件进行根据硬盘大小分段下载，每次都下载一部分，然后上传网盘，删除再下载其他部分，直到下载完所有文件。
 
 同时，通过机器人协议通信，方便在无法进行内网穿透的机器上进行使用，而且简化了平时使用下载程序的操作，提高了便利性。对于链接，直接向Bot发送消息就可以直接识别并下载，可以真正删除下载文件夹里的文件，是AriaNG等web面板无法做到的，作为管理下载的工具，及时通知下载完成都是非常的方便的。可以移动文件，对于通过rclone挂载硬盘的用户可以直接通过本程序进行复制粘贴等操作，无需打开ssh连接VPS进行`cp`操作，也非常的方便。
 
+## 【注意】
+由于作者我目前需要准备研究生考试，所以开发进度会适当停滞，但我认为这个程序的想法非常好，所以我会继续开发。
+非常欢迎大家提出问题或建议，虽然我这边不能专注于开发，但我还是会经常登录GitHub，看看大家的建议和pr😀。
+
 ## 实现
 
+
 <text style="color:red;">**注意：本项目仍处于测试阶段，提交的Release仅供测试，现在下载后并不保证您的稳定使用，也不能保证下面所勾选的内容已经被实现。当真正可以正常使用的时候，我会提交 V1.0 版本（V1.0 版本不会实现下面全部功能，但是已经可以正常稳定的使用）**</text>
+
+**只有已勾选的内容为目前实现的内容**
 
 #### 下载方式
 
@@ -34,7 +42,7 @@
 #### 机器人协议支持
 
 - [x] Telegram Bot
-  - [ ] 支持多用户使用
+  - [x] 支持多用户使用
   - [ ] 支持群组内使用
 - [ ] 腾讯QQ（使用普通QQ用户来进行交互）
 - [ ] 钉钉机器人
@@ -53,6 +61,14 @@
     - [x] 智能 BitTorrent/Magnet 下载方式
         - [x] 只选择下载最大的文件
         - [x] 根据文件大小智能选择文件，不选择小文件
+    - [ ] 下载OneDrive/SharePoint 分享链接中的文件（[Python demo](https://github.com/gaowanliang/OneDriveShareLinkPushAria2)）
+      - [ ] xxx-my.sharepoint.com 下载链接的下载
+        - [ ] 无下载密码的多文件推送
+        - [ ] 有下载密码的多文件推送
+        - [ ] 嵌套文件夹的文件推送
+        - [ ] 任意选择文件推送
+      - [ ] xxx.sharepoint.com 下载链接的下载
+      - [ ] xxx-my.sharepoint.cn 下载链接的下载(理论上支持)
     - [ ] 自适应环境存储空间的 BitTorrent/Magnet 下载
         - [ ] 不下载超过存储空间的文件
         - [ ] 根据存储空间分块多次下载 BitTorrent/Magnet 内的文件
@@ -62,7 +78,11 @@
 - [x] 上传文件
     - [x] 下载完成后，向 OneDrive 上传文件
       - [ ] 断点续传
+      - [ ] 支持世纪互联
     - [x] 下载完成后，向 Google Drive 上传文件
+      - [x] 自定义上传分块大小
+      - [x] 自定义上传线程数
+      - [x] 自定义超时时间
     - [ ] 下载完成后，向 Mega 上传文件
     - [ ] 下载完成后，向 天翼网盘 上传文件
     - [ ] (当使用Telegram进行通信时)下载完成后，向 Telegram 上传文件
@@ -79,7 +99,7 @@
     - [ ] 其他功能
         - [x] 文件树输出系统
             - [x] 对于简单文件夹的文件树输出
-            - [ ] 对于复杂文件夹结构使用图片代替文字输出
+            - [x] 对于复杂文件夹结构使用多消息输出
         - [ ] 通过演员ID获取在DMM中使用的所有CID
         - [ ] 查询 "ikoa"中的影片参数(利用mahuateng)
         - [ ] 通过javlibary演员网址获得所有演员的编号。
@@ -102,6 +122,10 @@
 3. 下载本程序
 4. 在想要执行本程序的根目录配置`config.json`
 5. 运行可执行文件
+
+## 教程
+
+[简体中文问答文档](docs/Q&A_zh-CN.md)
 
 ## 使用截图
 
